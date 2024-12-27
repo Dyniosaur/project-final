@@ -2,10 +2,12 @@ import Nav from "./Nav";
 
 const Header = () => {
     return(
-        <>
-            <img src = "/logoLL.png"></img>
+        <div className= "header">
+            <div className='item item1'>
+                <img src = "/logoLL.png"></img>
+            </div>
             <Nav/>
-        </>
+        </div>
     )
 }
 

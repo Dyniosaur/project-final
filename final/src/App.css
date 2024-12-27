@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+*{
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  width: 240px;
+  height: 58px;
+  background-color: #f4ce14;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 16px;
+  margin-top: 5%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.header {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 1fr;
+  margin: 0 10%;
+}
+
+.item1 img{
+  width: 80%;
+}
+.item1{
+  justify-content: flex-start;
+}
+
+.item {
+  display:flex;
+  align-items: center;
+}
+.item2{
+  justify-content: flex-end;
+}
+
+.item2 ul {
+  display:flex;
+  list-style: none;
+}
+.item2 ul li a{
+  padding: 0 10px;
+  text-decoration: none;
+  color: #333333;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 100%;
+  padding: 0 10%;
+  background-color: #495E57;
+  height: 370px;
+}
+
+.hero .hero1{
+  display: inline-block;
+  padding: 2% 10% 10% 0px;
+  height: 100%;
+}
+
+.hero .hero1 h1{
+  font-size: 64px;
+  font-weight: 700;
+  color: #f4ce14;
+}
+
+.hero .hero1 h2{
+  margin-top: 0px;
+  font-size: 40px;
+  font-weight: 500;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.hero .hero1 p{
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  margin-top: 5%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero .hero2{
+  padding-top: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero2 img{
+  width: 100%;
+  height: 112%;
+  border-radius: 16px 16px 16px 16px;
+}
+
+.highlights {
+  margin: 5% 10%;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  height: 300px;
+}
+
+.highlights .high1{
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.highlights .high1 .btnmenu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.highlights .high1 h1{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.highlights .high2{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
 }
