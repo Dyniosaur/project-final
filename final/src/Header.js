@@ -1,6 +1,11 @@
+import Nav from "./Nav";
+
 const Header = () => {
     return(
-        <img src = "/logoLL.png"></img>
+        <>
+            <img src = "/logoLL.png"></img>
+            <Nav/>
+        </>
     )
 }
 
