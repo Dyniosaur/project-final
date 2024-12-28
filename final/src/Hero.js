@@ -6,7 +6,7 @@ const Hero = () => {
             <div className="hero1">
                 <h1>Little Lemon</h1>
                 <h2>Chicago</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit sdzq dffc dsqz Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit sdzq dffc dsqz Lorem ipsum </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit sdzq dffc dsqz Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </p>
                 <Button content="Reserve a table"/>
             </div>
 
