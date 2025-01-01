@@ -7,6 +7,7 @@ const Header = () => {
                 <img src = "/logoLL.png"></img>
             </div>
             <Nav/>
+            <img className= "hamburger" src="./🦆 icon _hamburger menu.svg"></img>
         </div>
     )
 }

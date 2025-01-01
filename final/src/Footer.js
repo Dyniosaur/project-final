@@ -18,7 +18,7 @@ const Footer = () => {
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>
             </ul>
-            <ul>
+            <ul className="last-footer-child">
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>
