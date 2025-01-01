@@ -1,16 +1,25 @@
 import './App.css';
 
-const Card = ({image}) => {
+const Card = ({image, text, name}) => {
     return(
-        <>
-            <img src={image}></img>
-            <h3>Name of dish</h3>
-            <h4>$3.56</h4>
-            <p>lorem</p>
-            <h3></h3>
-            <img src="/VeloLL.png"></img>
-        </>
+        <div className ="card">
 
+            <div className ="card-image">
+                <img src={image}></img>
+            </div>
+
+            <div className = "card-name">
+                <h3>{name}</h3>
+                <h4>$3.56</h4>
+            </div>
+
+            <p>{text}</p>
+
+            <div className="order">
+                <a href="">Order a delivery !</a>
+                <img src="/VeloLL.png"></img>
+            </div>
+        </div>
     )
 }
 

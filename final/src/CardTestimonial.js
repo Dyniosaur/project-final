@@ -1,11 +1,18 @@
-const CardTestimonial = () => {
+const CardTestimonial = ({name, image, comment, rating}) => {
     return (
-        <>
-            <h2>Name</h2>
-            <img></img>
-            <h3>Note</h3>
-            <h3>Rating</h3>
-        </>
+        <div className = "cardtestimonial">
+            <div className="cd-name">
+                <h2>{name}</h2>
+                <img src={image}></img>
+
+            </div>
+            <p>{comment}</p>
+            <div className="ratings">
+                <h3>{rating}</h3>
+                <img src="./star.png"></img>
+            </div>
+
+        </div>
 
     )
 }

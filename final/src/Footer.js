@@ -1,28 +1,28 @@
 const Footer = () => {
     return(
-        <div>
-            <img src="/restaurant chef b.png"></img>
+        <div className ="footer">
+            <img src="/logoLL.png"></img>
             <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
             </ul>
             <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
             </ul>
             <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
+                <li><a href="#">qsdqf</a></li>
             </ul>
         </div>
     )
