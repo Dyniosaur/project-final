@@ -7,19 +7,19 @@ const Footer = () => {
         <div className ="footer">
             <img src="/logoLL.png" alt="LittleLemonLogo"></img>
             <ul>
-                <li><Link to ="/#header">Home</Link></li>
+                <li><Link to ="/#header" aria-label="Home">Home</Link></li>
                 <Routes>
                     <Route path="/#header" element={<Header />} />
                 </Routes>
-                <li><Link to="/#about">About us</Link></li>
+                <li><Link to="/#about" aria-label="About us">About us</Link></li>
                 <Routes>
-                    <Route path="/#about" element={<About />} />
+                    <Route path="/#about"  element={<About />} />
                 </Routes>
                 <li><Link to="/#testimonials">Testimonials</Link></li>
                 <Routes>
                     <Route path="/#testimonials" element={<Testimonials />} />
                 </Routes>
-                <li><Link to="/bookingpage">Reservation</Link></li>
+                <li><Link to="/bookingpage" aria-label="Reservations">Reservation</Link></li>
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>

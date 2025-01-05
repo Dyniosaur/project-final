@@ -146,7 +146,7 @@ function BookingForm({ availableTimes, initializeTimes, bookedTimes, updateBooke
         <p className="errors">{formik.errors.occasion}</p>
       )}
 
-      <button
+      <button aria-label="Submit Form"
         disabled={formik.isSubmitting}
         className="button"
         type="submit"
