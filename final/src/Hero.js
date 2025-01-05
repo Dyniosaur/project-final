@@ -7,7 +7,7 @@ const Hero = () => {
                 <h1>Little Lemon</h1>
                 <h2>Chicago</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit sdzq dffc dsqz Lorem ipsum dolor sit amet, consectetur adipiscing elit.  </p>
-                <Button content="Reserve a table"/>
+                <Button content="Reserve a table" destination={"/bookingpage"}/>
             </div>
 
             <div className="hero2">

@@ -1,16 +1,20 @@
+import { Link} from "react-router-dom";
+
+
 const Nav = () => {
     return(
         <div className="item item2">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Reservation</a></li>
-                <li><a href="#">Order Online</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
+          <ul>
+            <li><Link to="/#header">Home</Link></li>
+            <li><Link to="/#about">About</Link></li>
+            <li><Link to="/#highlights">Menu</Link></li>
+            <li><Link to="/bookingpage">Reservation</Link></li>
+            <li><Link to="#">Order Online</Link></li>
+            <li><Link to="#">Login</Link></li>
+          </ul>
         </div>
-    )
-}
+      );
+};
+
 
 export default Nav;

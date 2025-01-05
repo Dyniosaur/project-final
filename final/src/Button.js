@@ -1,9 +1,10 @@
 import './App.css';
+import { Link } from 'react-router-dom';
 
-const Button = ({id,content}) => {
+const Button = ({id,content,destination}) => {
     return(
         <>
-            <a id={id} content={content} className="button" href ="#">{content}</a>
+            <Link id={id} content={content} className="button" href ="#"  to={destination}>{content}</Link>
         </>
     )
 }

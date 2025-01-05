@@ -1,8 +1,25 @@
 import CardTestimonial from "./CardTestimonial.js"
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 
 const Testimonials = () => {
+
+    const location = useLocation();
+
+    useEffect(() => {
+       if (location.hash) {
+       const element = document.querySelector(location.hash);
+       if (element) {
+           element.scrollIntoView({ behavior: "smooth" });
+        }
+       }
+       }, [location]);
+
     return(
-        <div className="testi">
+
+    <section id="testimonials">
+            <div className="testi">
             <div className="testimonials-title">
                 <h1>Testimonials</h1>
             </div>
@@ -13,6 +30,9 @@ const Testimonials = () => {
                 <CardTestimonial image="./ProfilePic.jpg" name="Damian" comment="Lorem ipsum dolor sit amet, consectetur adipiscing elit." rating="Excellent 5/5"/>
             </div>
         </div>
+
+    </section>
+        
     )
 }
 

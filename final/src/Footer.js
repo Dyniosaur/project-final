@@ -1,12 +1,25 @@
+import { Link, Route, Routes } from "react-router-dom";
+import Header from "./Header";
+import About from "./About";
+import Testimonials from "./Testimonials";
 const Footer = () => {
     return(
         <div className ="footer">
-            <img src="/logoLL.png"></img>
+            <img src="/logoLL.png" alt="LittleLemonLogo"></img>
             <ul>
-                <li><a href="#">qsdqf</a></li>
-                <li><a href="#">qsdqf</a></li>
-                <li><a href="#">qsdqf</a></li>
-                <li><a href="#">qsdqf</a></li>
+                <li><Link to ="/#header">Home</Link></li>
+                <Routes>
+                    <Route path="/#header" element={<Header />} />
+                </Routes>
+                <li><Link to="/#about">About us</Link></li>
+                <Routes>
+                    <Route path="/#about" element={<About />} />
+                </Routes>
+                <li><Link to="/#testimonials">Testimonials</Link></li>
+                <Routes>
+                    <Route path="/#testimonials" element={<Testimonials />} />
+                </Routes>
+                <li><Link to="/bookingpage">Reservation</Link></li>
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>
                 <li><a href="#">qsdqf</a></li>

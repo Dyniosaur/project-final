@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .button{
   font-family: 'Karla';
   display: flex;
@@ -17,10 +21,20 @@
   font-size: 20px;
   font-weight: 800;
   box-shadow:5px 5px #33333332;
+  transition: 0.3s ease-in;
+  cursor: pointer;
 }
 
+.button:hover{
+  background-color: #333333;
+  color: white;
+}
 
-
+button:disabled{
+  background-color: #eb000000;
+  color: rgb(255, 2, 2);
+  opacity: 0.35;
+}
 
 .header {
   display: flex;
@@ -28,6 +42,7 @@
   align-items: center;
   margin: 1% 20%;
 }
+
 
 .item1 img{
   width: 200px;
@@ -45,6 +60,12 @@
   font-size: 20px;
   font-weight: 800;
   margin-left: 20px;
+}
+
+.item2 ul li a:hover{
+  font-family: 'Karla';
+  text-decoration: none;
+  color: #495E57;
 }
 
 .hero {
@@ -81,7 +102,7 @@
   font-family: "Karla";
   font-size: 18px;
   color: white;
-  padding: 25px 0px 10px;
+  padding: 25px 0px 20px;
 }
 
 
@@ -369,6 +390,14 @@
   color: #495E57;
 }
 
+.footer ul li a:hover{
+  text-decoration: none;
+  font-family: "Karla";
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+}
+
 .footer:nth-child(1) {
   justify-self: start;
 }
@@ -384,6 +413,7 @@
 .footer:nth-child(4) {
   justify-self: end;
 }
+
 
 
 /*MediaQueries*/
