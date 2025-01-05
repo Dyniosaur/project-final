@@ -9,32 +9,36 @@ import About from "./About.js";
 import BookingPage from './BookingPage.js';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
-const fetchAPI = (date) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const availableTimes = ['12:00', '14:00', '16:00'];
-      resolve(availableTimes);
-    }, 1000);
-  });
-};
-
+import { fetchAPI, submitAPI } from './api.js';
 
 function App() {
-
-
   const [availableTimes, setAvailableTimes] = useState([]);
+  const [bookedTimes, setBookedTimes] = useState([]);
 
-  const initializeTimes = async (date) => {
-    const times = await fetchAPI(date);
-    setAvailableTimes(times);
-    };
+  const initializeTimes = async (date = new Date().toISOString().split("T")[0]) => {
+    const dateObj = new Date(date);
+
+    if (isNaN(dateObj.getTime())) {
+      console.error("Invalid date:", date);
+      return [];
+    }
+
+    console.log("Fetching available times for:", dateObj);
+    const times = await fetchAPI(dateObj);
+    const filteredTimes = times.filter(time => !bookedTimes.includes(time));
+    setAvailableTimes(filteredTimes);
+    return filteredTimes;
+  };
+
+
+  const updateBookedTimes = (time) => {
+    setBookedTimes((prevBookedTimes) => [...prevBookedTimes, time]);
+  };
 
 
   useEffect(() => {
-    initializeTimes('2025-01-01');
-    }, []);
-
+    initializeTimes();
+  }, [bookedTimes]);
 
   return (
     <>
@@ -52,11 +56,21 @@ function App() {
             </>
           }
         />
-        <Route path="/bookingpage" element={<BookingPage availableTimes={availableTimes} initializeTimes={initializeTimes} />} />
+        <Route
+          path="/bookingpage"
+          element={
+            <BookingPage
+              initializeTimes={initializeTimes}
+              setAvailableTimes={setAvailableTimes}
+              availableTimes={availableTimes}
+              bookedTimes={bookedTimes}
+              updateBookedTimes={updateBookedTimes}
+            />
+          }
+        />
       </Routes>
     </>
   );
 }
-
 
 export default App;

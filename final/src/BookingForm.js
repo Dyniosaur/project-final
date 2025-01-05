@@ -1,42 +1,75 @@
-import {useFormik} from 'formik';
-import { useState, useEffect } from 'react';
-import { basicSchema } from './schema';
-/* global fetchAPI, submitAPI */
+import { useFormik } from "formik";
+import { useState, useEffect } from "react";
+import { basicSchema } from "./schema";
+import { submitAPI } from './api';
 
-const onSubmit = async (values, action) => {
+const onSubmit = async (values, action, updateBookedTimes) => {
   console.log(values);
-  action.resetForm();
+  if (submitAPI) {
+    const success = await submitAPI(values);
+    if (success) {
+      updateBookedTimes(values.time);
+      action.resetForm();
+      alert("Reservation submitted successfully!");
+    } else {
+      alert("Failed to submit reservation.");
+    }
+  } else {
+    console.error("submitAPI function is not available");
+  }
 };
 
-function BookingForm({ availableTimes, initializeTimes }) {
+function BookingForm({ availableTimes, initializeTimes, bookedTimes, updateBookedTimes }) {
+  const [times, setTimes] = useState(availableTimes || []);
 
-  const [times, setTimes] = useState(availableTimes);
-
-
-  useEffect(() => {
-    setTimes(availableTimes);
-  }, [availableTimes]);
-
-
-  const handleDateChange = (e) => {
+  const handleDateChange = async (e) => {
     const selectedDate = e.target.value;
-    initializeTimes(selectedDate);
+    formik.handleChange(e);
+
+    const fetchedTimes = await initializeTimes(selectedDate);
+    setTimes(fetchedTimes);
   };
 
   const formik = useFormik({
     initialValues: {
-      date: '',
-      time: '',
-      number: '',
-      occasion: '',
+      date: "",
+      time: "",
+      number: "",
+      occasion: "",
     },
     validationSchema: basicSchema,
-    onSubmit,
+    onSubmit: (values, action) => onSubmit(values, action, updateBookedTimes),
   });
 
+  useEffect(() => {
+    const checkSubmitAPI = setInterval(() => {
+      if (typeof window.submitAPI !== 'undefined') {
+        console.log("submitAPI is available!");
+        clearInterval(checkSubmitAPI);
+      }
+    }, 100);
+
+    return () => clearInterval(checkSubmitAPI);
+  }, []);
+
+  useEffect(() => {
+    const filteredTimes = availableTimes.filter(time => !bookedTimes.includes(time));
+    setTimes(filteredTimes);
+  }, [bookedTimes, availableTimes]);
+
   return (
-    <form onSubmit={formik.handleSubmit} style={{ display: 'grid', maxWidth: '400px', justifySelf: 'center', margin: '15px' }}>
-      <label htmlFor="date" style={{ margin: '15px' }}>Date</label>
+    <form
+      onSubmit={formik.handleSubmit}
+      style={{
+        display: "grid",
+        maxWidth: "400px",
+        justifySelf: "center",
+        margin: "15px",
+      }}
+    >
+      <label htmlFor="date" style={{ margin: "15px" }}>
+        Date
+      </label>
       <input
         value={formik.values.date}
         onChange={handleDateChange}
@@ -44,29 +77,43 @@ function BookingForm({ availableTimes, initializeTimes }) {
         type="date"
         placeholder="Date"
         onBlur={formik.handleBlur}
-        className={formik.errors.date && formik.touched.date ? 'input-errors' : ''}
+        className={formik.errors.date && formik.touched.date ? "input-errors" : ""}
       />
-      {formik.errors.date && formik.touched.date && <p className="errors">{formik.errors.date}</p>}
+      {formik.errors.date && formik.touched.date && (
+        <p className="errors">{formik.errors.date}</p>
+      )}
 
-      <label htmlFor="time" style={{ margin: '15px' }}>Time</label>
+      <label htmlFor="time" style={{ margin: "15px" }}>
+        Time
+      </label>
       <select
         value={formik.values.time}
         onChange={formik.handleChange}
         id="time"
         placeholder="Time"
         onBlur={formik.handleBlur}
-        className={formik.errors.time && formik.touched.time ? 'input-errors' : ''}
+        className={formik.errors.time && formik.touched.time ? "input-errors" : ""}
       >
         <option value="">Choose a time</option>
-        {times.map((time, index) => (
-          <option key={index} value={time}>
-            {time}
+        {Array.isArray(times) && times.length > 0 ? (
+          times.map((time, index) => (
+            <option key={index} value={time}>
+              {time}
+            </option>
+          ))
+        ) : (
+          <option value="" disabled>
+            No times available
           </option>
-        ))}
+        )}
       </select>
-      {formik.errors.time && formik.touched.time && <p className="errors">{formik.errors.time}</p>}
+      {formik.errors.time && formik.touched.time && (
+        <p className="errors">{formik.errors.time}</p>
+      )}
 
-      <label htmlFor="number" style={{ margin: '15px' }}>Number of guests</label>
+      <label htmlFor="number" style={{ margin: "15px" }}>
+        Number of guests
+      </label>
       <input
         value={formik.values.number}
         onChange={formik.handleChange}
@@ -74,28 +121,41 @@ function BookingForm({ availableTimes, initializeTimes }) {
         type="number"
         placeholder="Number of guests"
         onBlur={formik.handleBlur}
-        className={formik.errors.number && formik.touched.number ? 'input-errors' : ''}
+        className={formik.errors.number && formik.touched.number ? "input-errors" : ""}
       />
-      {formik.errors.number && formik.touched.number && <p className="errors">{formik.errors.number}</p>}
+      {formik.errors.number && formik.touched.number && (
+        <p className="errors">{formik.errors.number}</p>
+      )}
 
-      <label htmlFor="occasion" style={{ margin: '15px' }}>Occasion</label>
+      <label htmlFor="occasion" style={{ margin: "15px" }}>
+        Occasion
+      </label>
       <select
         value={formik.values.occasion}
         onChange={formik.handleChange}
         id="occasion"
         placeholder="Occasion"
         onBlur={formik.handleBlur}
-        className={formik.errors.occasion && formik.touched.occasion ? 'select-errors' : ''}
+        className={formik.errors.occasion && formik.touched.occasion ? "select-errors" : ""}
       >
-        <option>Birthday</option>
-        <option>Anniversary</option>
+        <option value="">Select an occasion</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Anniversary">Anniversary</option>
       </select>
-      {formik.errors.occasion && formik.touched.occasion && <p className="errors">{formik.errors.occasion}</p>}
+      {formik.errors.occasion && formik.touched.occasion && (
+        <p className="errors">{formik.errors.occasion}</p>
+      )}
 
-      <button disabled={formik.isSubmitting} className="button" type="submit" style={{ margin: '40px' }}>Reserve!</button>
+      <button
+        disabled={formik.isSubmitting}
+        className="button"
+        type="submit"
+        style={{ margin: "40px" }}
+      >
+        Reserve!
+      </button>
     </form>
   );
 }
-
 
 export default BookingForm;
